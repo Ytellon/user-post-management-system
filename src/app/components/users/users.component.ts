@@ -16,6 +16,9 @@ export class UsersComponent implements OnInit {
   pageSize: number = 10;
   totalItems: number = 0;
   totalPages: number = 0;
+  searchTerm: string = '';
+  selectedSearchOption: string = 'name';
+  showNoUsersFoundMessage: boolean = false;
 
   constructor(usersService: UsersService, private router: Router) {
     this.usersService = usersService;
@@ -71,5 +74,23 @@ export class UsersComponent implements OnInit {
     this.currentPage = Math.ceil(this.totalItems / this.pageSize);
     this.getUsers();
   }
+
+  searchUsers() {
+  if (this.searchTerm.trim() !== '') {
+    const searchBy = this.selectedSearchOption === 'name' ? 'name' : 'email';
+    this.usersService.searchUsers(this.searchTerm, searchBy)
+      .subscribe((response: any) => {
+        if (response.body.length === 0) {
+          this.showNoUsersFoundMessage = true;
+        }
+        this.users = response.body;
+        this.totalItems = +response.headers.get('X-Pagination-Total')
+        this.totalPages = +response.headers.get('X-Pagination-Pages')
+        this.searchTerm = '';
+      });
+  } else {
+    this.getUsers();
+  }
+}
 
 }

@@ -19,6 +19,11 @@ export class UsersService {
     return this.http.get<any>(this.API, { params, observe: 'response'});
   }
 
+  searchUsers(searchTerm: string, searchBy: string): Observable<any> {
+  const params = { [searchBy]: searchTerm };
+  return this.http.get<any>(this.API, { params, observe: 'response' });
+}
+
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.API}/${id}`);
   }

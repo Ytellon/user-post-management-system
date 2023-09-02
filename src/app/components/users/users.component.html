@@ -1,3 +1,15 @@
+<div class="search">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquisar por nome ou e-mail">
+  <select [(ngModel)]="selectedSearchOption">
+    <option value="name">Nome</option>
+    <option value="email">E-mail</option>
+  </select>
+  <button (click)="searchUsers()" class="btn btn-primary">Pesquisar</button>
+</div>
+<div *ngIf="showNoUsersFoundMessage" class="no-users-found-message">
+  Usuário não encontrado.
+</div>
+
 <div *ngFor="let user of users" class="user-card">
   <div class="user-info">
     <p><strong>Nome:</strong> {{ user.name }}</p>
