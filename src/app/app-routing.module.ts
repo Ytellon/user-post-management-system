@@ -6,7 +6,7 @@ import { PostsComponent } from './components/posts/posts.component';
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'posts', component: PostsComponent },
-  { path: '', redirectTo: '/usuarios', pathMatch: 'full' }, // Rota padrão
+  { path: '', redirectTo: '/users', pathMatch: 'full' }, // Rota padrão
 ];
 
 @NgModule({
