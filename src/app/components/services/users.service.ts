@@ -14,8 +14,9 @@ export class UsersService {
   
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.API);
+  getUsers(page: number, perPage: number): Observable<any> {
+    const params = { page: page.toString(), per_page: perPage.toString() };
+    return this.http.get<any>(this.API, { params, observe: 'response'});
   }
 
   getUserById(id: number): Observable<User> {

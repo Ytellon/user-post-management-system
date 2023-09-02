@@ -10,3 +10,13 @@
     <button (click)="deleteUser(user)" class="btn btn-danger">Excluir</button>
   </div>
 </div>
+
+<div *ngIf="totalItems > 0" class="pagination">
+  <button (click)="goToFirstPage()" [disabled]="currentPage === 1" class="btn btn-primary">Primeira</button>
+  <button (click)="goToPreviousPage()" [disabled]="currentPage === 1" class="btn btn-primary">Anterior</button>
+
+  <span class="current-page">{{ currentPage }}</span>
+
+  <button (click)="goToNextPage()" [disabled]="currentPage === totalPages" class="btn btn-primary">Próxima</button>
+  <button (click)="goToLastPage()" [disabled]="currentPage === totalPages" class="btn btn-primary">Última</button>
+</div>
