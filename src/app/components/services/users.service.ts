@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../model/user.interface';
+import { User, UserPost } from '../model/user.interface';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class UsersService {
     return this.http.get<User[]>(this.API);
   }
 
-  createUser(user: User): Observable<User> {
+  createUser(user: UserPost): Observable<User> {
     return this.http.post<User>(this.API, user, {
       headers: {
         Authorization: `Bearer ${this.TOKEN}`

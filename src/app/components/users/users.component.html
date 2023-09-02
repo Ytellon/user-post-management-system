@@ -1,1 +1,12 @@
-<h1> users work </h1>
+<div *ngFor="let user of users" class="user-card">
+  <div class="user-info">
+    <p>{{ user.name }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.gender }}</p>
+    <p>{{user.status}}</p>
+  </div>
+  <div class="user-actions">
+    <!-- <button (click)="editUser(user)">Editar</button> -->
+    <button (click)="deleteUser(user)">Excluir</button>
+  </div>
+</div>
