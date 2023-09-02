@@ -1,9 +1,11 @@
+<a routerLink="/create-user" class="btn btn-success">Criar Novo Usuário</a>
+
 <div *ngFor="let user of users" class="user-card">
   <div class="user-info">
     <p>{{ user.name }}</p>
     <p>{{ user.email }}</p>
     <p>{{ user.gender }}</p>
-    <p>{{user.status}}</p>
+    <p>{{ user.status }}</p>
   </div>
   <div class="user-actions">
     <!-- <button (click)="editUser(user)">Editar</button> -->

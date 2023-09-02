@@ -7,18 +7,22 @@ import { AppComponent } from './app.component';
 import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.component';
 import { UsersComponent } from './components/users/users.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { UserCreateComponent } from './components/users/user-create/user-create.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarMenuComponent,
     UsersComponent,
-    PostsComponent
+    PostsComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // Importação do módulo HTTP
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
