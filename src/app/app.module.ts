@@ -9,6 +9,7 @@ import { UsersComponent } from './components/users/users.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
+import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     SidebarMenuComponent,
     UsersComponent,
     PostsComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

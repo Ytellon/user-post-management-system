@@ -18,6 +18,10 @@ export class UsersService {
     return this.http.get<User[]>(this.API);
   }
 
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.API}/${id}`);
+  }
+
   createUser(user: UserPost): Observable<User> {
     return this.http.post<User>(this.API, user, {
       headers: {
