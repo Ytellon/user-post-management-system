@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
   totalItems: number = 0;
   totalPages: number = 0;
   searchTerm: string = '';
-  selectedSearchOption: string = 'name';
+  selectedSearchOption: string = 'title';
   showNoPostsFoundMessage: boolean = false;
 
   constructor(postsService: PostsService, private router: Router) {
@@ -78,18 +78,31 @@ export class PostsComponent implements OnInit {
   }
 
   searchPosts() {
-    if (this.searchTerm) {
-      this.postsService
-        .searchPosts(this.searchTerm, this.selectedSearchOption)
-        .subscribe((response: any) => {
-          if (response.body.length === 0) {
+    if (this.searchTerm.trim() !== '') {
+      const searchBy = this.selectedSearchOption === 'user' ? 'user' : 'title';
+
+      this.postsService.searchPosts(this.searchTerm, searchBy)
+      .subscribe((response: any) => {
+        if (searchBy === 'user') {
+          const firstUser = response.body[0];
+          if (firstUser) {
+            this.postsService.getPostByUserId(firstUser.id)
+            .subscribe((postsResponse: any) => {
+              this.posts = postsResponse.body;
+              this.totalItems = Number(response.headers.get('X-Pagination-Total'));
+              this.totalPages = Number(response.headers.get('X-Pagination-Pages'));
+            });
+          } else {
             this.showNoPostsFoundMessage = true;
-          }
+            this.posts = [];
+            this.totalItems = 0;
+          } 
+        } else {
           this.posts = response.body;
           this.totalItems = Number(response.headers.get('X-Pagination-Total'));
           this.totalPages = Number(response.headers.get('X-Pagination-Pages'));
-          this.showNoPostsFoundMessage = this.posts.length === 0;
-        });
+        }
+      });
     } else {
       this.getPosts();
     }
