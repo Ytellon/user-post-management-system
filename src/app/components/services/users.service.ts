@@ -44,8 +44,8 @@ export class UsersService {
     });
   }
 
-  deleteUser(id: number): Observable<User> {
-    return this.http.delete<User>(`${this.API}/${id}`, {
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API}/${id}`, {
       headers: {
         Authorization: `Bearer ${this.TOKEN}`
       }
