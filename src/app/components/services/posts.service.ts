@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CreatePost, Post } from '../model/post.interface';
 import { environment } from 'src/environments/environment.development';
+import { User } from '../model/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,10 @@ export class PostsService {
       params,
       observe: 'response',
     });
+  }
+
+  searchUserByName(name: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.APIUSER}?name=${name}`);
   }
 
   searchPosts(searchTerm: string, searchBy: string): Observable<any> {
