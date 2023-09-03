@@ -1,56 +1,97 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserEditComponent } from './user-edit.component';
+import { UsersService } from '../../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { User } from '../../model/user.interface';
-import { UsersService } from '../../services/users.service';
-import { UserEditComponent } from './user-edit.component';
 
 describe('UserEditComponent', () => {
   let component: UserEditComponent;
   let fixture: ComponentFixture<UserEditComponent>;
-  let usersServiceSpy: jasmine.SpyObj<UsersService>;
-  let routerSpy: jasmine.SpyObj<Router>;
-  let activatedRouteSpy: jasmine.SpyObj<ActivatedRoute>;
+  let usersService: UsersService;
+  let router: Router;
+  let activatedRoute: ActivatedRoute;
 
   beforeEach(() => {
-    usersServiceSpy = jasmine.createSpyObj('UsersService', ['getUserById', 'editUser']);
-    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-    activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', [], { snapshot: { paramMap: { get: () => '1' } } });
-
     TestBed.configureTestingModule({
       declarations: [UserEditComponent],
+      imports: [FormsModule],
       providers: [
-        { provide: UsersService, useValue: usersServiceSpy },
-        { provide: Router, useValue: routerSpy },
-        { provide: ActivatedRoute, useValue: activatedRouteSpy }
-      ]
+        {
+          provide: UsersService,
+          useValue: {
+            getUserById: () =>
+              of({
+                id: 1,
+                name: 'User 1',
+                email: 'user1@example.com',
+                gender: 'Male',
+                status: 'Active',
+              } as User),
+            editUser: () =>
+              of({
+                id: 1,
+                name: 'User 1',
+                email: 'user1@example.com',
+                gender: 'Male',
+                status: 'Active',
+              } as User),
+          },
+        },
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: {
+                get: (key: string) => '1',
+              },
+            },
+          },
+        },
+        {
+          provide: Router,
+          useValue: {
+            navigate: () => {},
+          },
+        },
+      ],
     });
 
     fixture = TestBed.createComponent(UserEditComponent);
     component = fixture.componentInstance;
+    usersService = TestBed.inject(UsersService);
+    router = TestBed.inject(Router);
+    activatedRoute = TestBed.inject(ActivatedRoute);
   });
 
-  it('should create', () => {
+  it('should create the UserEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get user by id on init', () => {
-    const user: User = { id: 1, name: 'John Doe', email: 'john.doe@example.com', gender: 'male', status: 'active' };
-    usersServiceSpy.getUserById.and.returnValue(of(user));
+  it('should fetch user details on ngOnInit', () => {
+    spyOn(usersService, 'getUserById').and.callThrough();
 
     component.ngOnInit();
 
-    expect(usersServiceSpy.getUserById).toHaveBeenCalledWith(1);
-    expect(component.user).toEqual(user);
+    expect(usersService.getUserById).toHaveBeenCalledWith(1);
+    expect(component.user).toEqual({
+      id: 1,
+      name: 'User 1',
+      email: 'user1@example.com',
+      gender: 'Male',
+      status: 'Active',
+    } as User);
   });
 
-  it('should edit user on submit', () => {
-    const user: User = { id: 1, name: 'John Doe', email: 'john.doe@example.com', gender: 'male', status: 'active' };
-    usersServiceSpy.editUser.and.returnValue(of(user));
+  it('should submit form and navigate to /users', () => {
+    spyOn(usersService, 'editUser').and.callThrough();
+    spyOn(router, 'navigate');
 
     component.onSubmit();
 
-    expect(usersServiceSpy.editUser).toHaveBeenCalledWith(component.user);
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/users']);
+    expect(usersService.editUser).toHaveBeenCalledWith(component.user);
+    expect(router.navigate).toHaveBeenCalledWith(['/users']);
   });
+
 });
