@@ -1,15 +1,59 @@
-.sidebar-menu {
-  list-style-type: none;
+.sidenav-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+  color: white;
+}
+
+.menu-item {
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.sidebar-menu li {
-  display: inline-block;
-  padding: 10px;
-  cursor: pointer;
+.menu-item a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 12px 16px;
+  transition: background-color 0.3s;
 }
 
-.sidebar-menu li:hover {
-  background-color: #ccc;
+.menu-item a:hover {
+  background-color: #555;
+}
+
+.submenu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.submenu li a {
+  padding: 10px 30px;
+}
+
+.mat-toolbar {
+  background-color: #1976D2;
+  color: white; 
+}
+
+.mat-icon-button {
+  color: white;
+}
+
+.mat-toolbar span {
+  flex-grow: 1;
+}
+
+router-outlet {
+  padding: 16px;
 }

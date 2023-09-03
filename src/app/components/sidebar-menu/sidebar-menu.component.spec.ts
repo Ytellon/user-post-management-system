@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router'; // Importe o RouterModule
+import { RouterModule } from '@angular/router';
 import { SidebarMenuComponent } from './sidebar-menu.component';
 
 describe('SidebarMenuComponent', () => {

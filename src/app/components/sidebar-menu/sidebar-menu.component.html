@@ -1,7 +1,45 @@
-<div class="menu">
-  <ul class="sidebar-menu">
-    <li><a routerLink="/users">Users</a></li>
-    <li><a routerLink="/posts">Posts</a></li>
-  </ul>
-</div>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav">
+    <mat-nav-list>
+      <li class="menu-item">
+        <a mat-list-item (click)="closeSidenav()">Usuários</a>
+        <ul class="submenu">
+          <li>
+            <a mat-list-item routerLink="/create-user" (click)="closeSidenav()"
+              >Criar Usuários</a
+            >
+          </li>
+          <li>
+            <a mat-list-item routerLink="/users" (click)="closeSidenav()"
+              >Todos Usuários</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a mat-list-item routerLink="/posts" (click)="closeSidenav()">Postagens</a>
+        <ul class="submenu">
+          <li>
+            <a mat-list-item routerLink="/create-post" (click)="closeSidenav()"
+              >Criar Postagem</a
+            >
+          </li>
+          <li>
+            <a mat-list-item routerLink="/posts" (click)="closeSidenav()"
+              >Todas Postagens</a
+            >
+          </li>
+        </ul>
+      </li>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="openSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Gestão de Usuários e Postagens</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

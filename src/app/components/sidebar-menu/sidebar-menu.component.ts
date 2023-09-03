@@ -1,13 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidebar-menu',
   templateUrl: './sidebar-menu.component.html',
-  styleUrls: ['./sidebar-menu.component.css']
+  styleUrls: ['./sidebar-menu.component.css'],
 })
-export class SidebarMenuComponent implements OnInit {
+export class SidebarMenuComponent implements AfterViewInit {
+  @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngAfterViewInit() {
+  }
+
+  openSidenav() {
+    this.sidenav.open();
+  }
+
+  closeSidenav() {
+    this.sidenav.close();
+  }
 }
