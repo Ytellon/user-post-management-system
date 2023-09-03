@@ -1,1 +1,37 @@
-<p>posts works!</p>
+<div class="container">
+  <h1>Listagem de Posts</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Pesquisar..."
+    />
+    <select [(ngModel)]="selectedSearchOption">
+      <option value="title">Titulo</option>
+      <option value="user">Usuário</option>
+    </select>
+    <button (click)="searchPosts()">Pesquisar</button>
+  </div>
+
+  <ul class="post-list">
+    <li *ngFor="let post of posts">
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.body }}</p>
+      <button (click)="editPost(post)">Editar</button>
+      <button (click)="deletePost(post)">Excluir</button>
+    </li>
+  </ul>
+
+  <div class="pagination">
+    <button (click)="goToFirstPage()">Primeira</button>
+    <button (click)="goToPreviousPage()">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="goToNextPage()">Próxima</button>
+    <button (click)="goToLastPage()">Última</button>
+  </div>
+
+  <div *ngIf="showNoPostsFoundMessage" class="no-posts-found">
+    Nenhum post encontrado.
+  </div>
+</div>

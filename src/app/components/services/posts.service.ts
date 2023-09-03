@@ -12,11 +12,22 @@ export class PostsService {
   private readonly API = `${environment.apiUrl}/posts`
   private readonly TOKEN = `${environment.TOKEN}`
 
-
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.API);
+  getPosts(page: number, perPage: number): Observable<any> {
+    const params = { page: page.toString(), per_page: perPage.toString() };
+    return this.http.get<any>(this.API, {
+      params, observe: 'response'
+    });
+  }
+
+  searchPosts(searchTerm: string, searchBy: string): Observable<any> {
+    const params = { [searchBy]: searchTerm };
+    return this.http.get<any>(this.API, { params, observe: 'response' });
+  }
+
+  getPostById(id: number): Observable<Post> {
+    return this.http.get<Post>(`${this.API}/${id}`);
   }
 
   createPost(post: Post): Observable<Post> {

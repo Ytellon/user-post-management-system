@@ -10,6 +10,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserEditComponent } from './components/users/user-edit/user-edit.compon
     UsersComponent,
     PostsComponent,
     UserCreateComponent,
-    UserEditComponent
+    UserEditComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,
