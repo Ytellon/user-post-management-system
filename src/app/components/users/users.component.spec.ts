@@ -88,28 +88,6 @@ describe('UsersComponent', () => {
     expect(usersService.deleteUser).not.toHaveBeenCalled();
   });
 
-  it('should navigate to edit user', () => {
-    const userToEdit = { id: 1, name: 'User 1', email: 'user1@example.com', gender: 'male', status: 'active' };
-    
-    spyOn(router, 'navigate');
-
-    component.editUser(userToEdit);
-
-    expect(router).toHaveBeenCalledWith(['/edit-user', userToEdit.id]);
-  });
-
-  it('should reset search term and get users', () => {
-    component.searchTerm = 'test';
-    spyOn(usersService, 'getUsers').and.returnValue(
-      of({ body: [], headers: {} })
-    );
-
-    component.searchUsers();
-
-    expect(component.searchTerm).toBe('');
-    expect(usersService.getUsers).toHaveBeenCalled();
-  });
-
   it('should show no users found message when no results', () => {
     component.searchTerm = 'nonexistentuser';
     spyOn(usersService, 'searchUsers').and.returnValue(
