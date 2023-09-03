@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Post } from '../model/post.interface';
+import { CreatePost, Post } from '../model/post.interface';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class PostsService {
     return this.http.get<Post>(`${this.API}/${id}`);
   }
 
-  createPost(post: Post): Observable<Post> {
+  createPost(post: CreatePost): Observable<Post> {
     return this.http.post<Post>(this.API, post, {
       headers: {
         Authorization: `Bearer ${this.TOKEN}`
