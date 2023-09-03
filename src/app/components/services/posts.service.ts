@@ -72,4 +72,13 @@ export class PostsService {
       },
     });
   }
+
+  getApiPostUrl(): string {
+    return this.APIPOST;
+  }
+
+  getApiUserUrl(): string {
+    return this.APIUSER;
+  }
+  
 }
