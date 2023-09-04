@@ -35,9 +35,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-icon-button (click)="openSidenav()">
-        <mat-icon>menu</mat-icon>
-      </button>
+       <mat-icon class="clickable-icon" (click)="openSidenav()">menu</mat-icon>
       <span>Gestão de Usuários e Postagens</span>
     </mat-toolbar>
     <router-outlet></router-outlet>

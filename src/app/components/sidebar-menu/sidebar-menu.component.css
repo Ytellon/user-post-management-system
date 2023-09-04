@@ -50,6 +50,16 @@
   color: white;
 }
 
+.clickable-icon {
+  cursor: pointer;
+  padding: 0 14px;
+  transition: color 0.3s;
+}
+
+.clickable-icon:hover {
+  color: #0056b3;
+}
+
 .mat-toolbar span {
   flex-grow: 1;
 }

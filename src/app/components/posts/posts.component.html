@@ -1,39 +1,37 @@
-<a routerLink="/create-post" class="btn btn-success">Criar novo Post</a>
+  <div class="container">
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Pesquisar..."
+      />
+      <select [(ngModel)]="selectedSearchOption">
+        <option value="title">Titulo</option>
+        <option value="user">Usuário</option>
+      </select>
+      <button (click)="searchPosts()" class="btn btn-primary">Pesquisar</button>
+    </div>
 
-<div class="container">
-  <h1>Listagem de Posts</h1>
+    <div class="post-cards">
+      <div *ngFor="let post of posts" class="post-card">
+        <h2>Título: {{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+        <div class="post-buttons">
+          <button (click)="editPost(post)" class="btn btn-primary">Editar</button>
+          <button (click)="deletePost(post)" class="btn btn-danger">Excluir</button>
+        </div>
+      </div>
+    </div>
 
-  <div class="search-bar">
-    <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      placeholder="Pesquisar..."
-    />
-    <select [(ngModel)]="selectedSearchOption">
-      <option value="title">Titulo</option>
-      <option value="user">Usuário</option>
-    </select>
-    <button (click)="searchPosts()">Pesquisar</button>
+    <div class="pagination">
+      <button (click)="goToFirstPage()" [disabled]="currentPage === 1" class="btn btn-primary">Primeira</button>
+      <button (click)="goToPreviousPage()" [disabled]="currentPage === 1" class="btn btn-primary">Anterior</button>
+      <span>Página {{ currentPage }}</span>
+      <button (click)="goToNextPage()" [disabled]="currentPage === totalPages" class="btn btn-primary">Próxima</button>
+      <button (click)="goToLastPage()" [disabled]="currentPage === totalPages" class="btn btn-primary">Última</button>
+    </div>
+
+    <div *ngIf="showNoPostsFoundMessage" class="no-posts-found">
+      Nenhum post encontrado.
+    </div>
   </div>
-
-  <ul class="post-list">
-    <li *ngFor="let post of posts">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.body }}</p>
-      <button (click)="editPost(post)">Editar</button>
-      <button (click)="deletePost(post)">Excluir</button>
-    </li>
-  </ul>
-
-  <div class="pagination">
-    <button (click)="goToFirstPage()">Primeira</button>
-    <button (click)="goToPreviousPage()">Anterior</button>
-    <span>Página {{ currentPage }} de {{ totalPages }}</span>
-    <button (click)="goToNextPage()">Próxima</button>
-    <button (click)="goToLastPage()">Última</button>
-  </div>
-
-  <div *ngIf="showNoPostsFoundMessage" class="no-posts-found">
-    Nenhum post encontrado.
-  </div>
-</div>
