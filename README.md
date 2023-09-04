@@ -1,28 +1,78 @@
-# UserPostManagementSystem
+# Sistema de Gestão de Usuários e Postagens com Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+Este é um projeto Angular que implementa um sistema de gestão de usuários e postagens com uma interface de usuário amigável. O sistema inclui funcionalidades de CRUD para usuários e postagens, bem como recursos de pesquisa e paginação. Ele se integra à API pública GoREST para obter e manipular dados.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Usuários
 
-## Code scaffolding
+- Listar, cadastrar, editar e deletar usuários.
+- Paginação para a tela de listagem de usuários.
+- Pesquisa por nome ou e-mail de usuários.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Postagens
 
-## Build
+- Listar, cadastrar, editar e deletar postagens.
+- Paginação para a tela de listagem de postagens.
+- No formulário de cadastro de postagens, é possível pesquisar e selecionar o usuário através de um campo de autocomplete.
+- Pesquisa por título da postagem ou nome do usuário.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Documentação da API
 
-## Running end-to-end tests
+A documentação da API utilizada no projeto está disponível em [Documentação da API GoREST](https://gorest.co.in/).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Requisitos
 
-## Further help
+Certifique-se de ter o Angular CLI instalado globalmente em sua máquina.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# user-post-management-system
+
+
+## Configuração
+
+Clone este repositório em seu ambiente local.
+
+```
+git clone git@github.com:Ytellon/user-post-management-system.git
+```
+
+Navegue até o diretório do projeto.
+
+```
+cd user-post-management-system
+```
+
+Execute `npm install` para instalar as dependências.
+
+Configure o token de API no arquivo de configuração adequado.
+
+Execute `ng serve` para iniciar o servidor de desenvolvimento.
+
+Abra seu navegador e acesse `http://localhost:4200/` para usar o aplicativo.
+
+
+
+> `Aviso: O token no arquivo environment.ts provavelmente está expirado, precisa acessar a documentação da API e gerar um outro. `
+
+
+
+
+## Como Contribuir
+
+Se você deseja contribuir para este projeto, siga estas etapas:
+
+1. Fork este repositório.
+2. Crie uma branch com uma descrição significativa do que deseja implementar ou corrigir.
+3. Faça as alterações desejadas e adicione testes, se aplicável.
+4. Envie um pull request, explicando suas alterações e por que elas são necessárias.
+
+
+
+## Autor
+
+[@Ytellon]
+
+## Licença
+
+Este projeto é licenciado sob a [Licença MIT](LICENSE).
