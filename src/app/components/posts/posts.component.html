@@ -1,17 +1,17 @@
-  <div class="container">
-    <div class="search-bar">
-      <input
-        type="text"
-        [(ngModel)]="searchTerm"
-        placeholder="Pesquisar..."
-      />
-      <select [(ngModel)]="selectedSearchOption">
-        <option value="title">Titulo</option>
-        <option value="user">Usuário</option>
-      </select>
-      <button (click)="searchPosts()" class="btn btn-primary">Pesquisar</button>
-    </div>
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Pesquisar..."
+  />
+  <select [(ngModel)]="selectedSearchOption">
+    <option value="title">Titulo</option>
+    <option value="user">Usuário</option>
+  </select>
+  <button (click)="searchPosts()" class="btn btn-primary">Pesquisar</button>
+</div>
 
+  <div class="container">
     <div class="post-cards">
       <div *ngFor="let post of posts" class="post-card">
         <h2>Título: {{ post.title }}</h2>
