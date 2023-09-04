@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { UserPost } from '../../model/user.interface';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 describe('UserCreateComponent', () => {
   let component: UserCreateComponent;
@@ -15,7 +18,7 @@ describe('UserCreateComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [UserCreateComponent],
-      imports: [FormsModule],
+      imports: [FormsModule, MatFormFieldModule, MatAutocompleteModule],
       providers: [
         {
           provide: UsersService,

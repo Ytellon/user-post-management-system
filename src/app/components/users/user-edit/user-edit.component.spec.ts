@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { User } from '../../model/user.interface';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 describe('UserEditComponent', () => {
   let component: UserEditComponent;
@@ -16,7 +19,7 @@ describe('UserEditComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [UserEditComponent],
-      imports: [FormsModule],
+      imports: [FormsModule, MatFormFieldModule, MatAutocompleteModule],
       providers: [
         {
           provide: UsersService,

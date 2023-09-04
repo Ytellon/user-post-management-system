@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { Post } from '../../model/post.interface';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 describe('PostEditComponent', () => {
   let component: PostEditComponent;
@@ -16,7 +19,7 @@ describe('PostEditComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PostEditComponent],
-      imports: [FormsModule],
+      imports: [FormsModule, MatFormFieldModule, MatAutocompleteModule],
       providers: [
         {
           provide: PostsService,

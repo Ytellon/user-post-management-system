@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { SidebarMenuComponent } from './sidebar-menu.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
 
 describe('SidebarMenuComponent', () => {
   let component: SidebarMenuComponent;
@@ -9,7 +14,7 @@ describe('SidebarMenuComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SidebarMenuComponent],
-      imports: [RouterModule.forRoot([])],
+      imports: [RouterModule.forRoot([]), MatFormFieldModule, MatAutocompleteModule, MatSidenavModule],
     });
 
     fixture = TestBed.createComponent(SidebarMenuComponent);
