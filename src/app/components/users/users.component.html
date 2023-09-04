@@ -7,6 +7,10 @@
   <button (click)="searchUsers()" class="btn btn-primary search-button">Pesquisar</button>
 </div>
 
+<div *ngIf="showNoUsersFoundMessage" class="no-users-found-message">
+  Usuário não encontrado.
+</div>
+
 <div class="user-cards">
   <div *ngFor="let user of users" class="user-card">
     <div class="user-info">
@@ -22,9 +26,6 @@
   </div>
 </div>
 
-<div *ngIf="showNoUsersFoundMessage" class="no-users-found-message">
-  Usuário não encontrado.
-</div>
 
 <div *ngIf="totalItems > 0" class="pagination">
   <button (click)="goToFirstPage()" [disabled]="currentPage === 1" class="btn btn-primary">Primeira</button>
