@@ -2,6 +2,8 @@
 
 Este é um projeto Angular que implementa um sistema de gestão de usuários e postagens com uma interface de usuário amigável. O sistema inclui funcionalidades de CRUD para usuários e postagens, bem como recursos de pesquisa e paginação. Ele se integra à API pública GoREST para obter e manipular dados.
 
+# Deployment: (https://user-post-management-system.vercel.app/users)
+
 ## Funcionalidades
 
 ### Usuários
